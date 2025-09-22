@@ -13,15 +13,14 @@ export default function Primeur() {
     let prix = useRef()
     let quantite = useRef()
 
-    let [total, setTotal] = useState()
+    let [total, setTotal] = useState(0)
 
-    function afficherTotal(valeur){
-        
-        setTotal(valeur*prix)
-        
-        console.log(produits);
-        
-        
+    function afficherTotal(valeur, ind) {
+
+        setTotal(total + valeur * produits[ind].prix)
+        console.log(valeur, ind);
+
+
     }
 
     function addProduct() {
@@ -50,9 +49,9 @@ export default function Primeur() {
             </div>
             <ul>
                 {
-                    produits.map(p =>
+                    produits.map((p, ind) =>
                         <li key={p.nom}>
-                            <Produit produit={p} setQuantity={afficherTotal} />
+                            <Produit produit={p} setQuantity={(valeur) => afficherTotal(valeur, ind)} />
                         </li>
                     )
 
