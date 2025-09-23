@@ -1,15 +1,12 @@
 import { useContext } from "react"
 import { TvaContext } from "./Primeur"
 
-export default function Prix({prix }) {
+export default function Prix({prixHt}) {
 
-    const TVA = useContext(TvaContext)
+    const tva = useContext(TvaContext)
     return (
-
-        <div>
-            
-            <span>Prix HT : {prix}€ </span>
-            <span>Prix TTC : {(1 + TVA) * prix}€</span>
-        </div>
+        <>
+        {prixHt} € HT, ({prixHt + prixHt * tva} € TTC)
+        </>
     )
 }

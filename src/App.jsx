@@ -10,6 +10,7 @@ import OnOff from './components/onOff'
 import Clavier from './components/Clavier'
 import { useState } from 'react'
 import Container from './components/Container'
+import Panier from './components/Panier'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       <Compteur/>
       <OnOff/>
       <Clavier/>
+      <Panier/>
     </>
   )
 }

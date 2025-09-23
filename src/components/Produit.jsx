@@ -1,28 +1,31 @@
-import Prix from "./Prix"
+// export default function Produit({ nom, prix, quantite }) {
+//     return (
+//         <>
+//             {nom}, {prix}€, {quantite} pièces
+//         </>
+//     )
+
 import { useRef, useState } from "react"
+import Prix from "./Prix"
 
-export default function Produit({ produit, setQuantity }) {
 
-    let quantite = useRef(1)
-    //let [disabled, setDisabled] = useState(true)
-
+// }
+export default function Produit({ produit, onSendQuantity }) {
+    let qteReservee = useRef()
     let [disabled, setDisabled] = useState(false)
-
     function envoyer() {
-        setQuantity(quantite.current.value)
+        onSendQuantity(qteReservee.current.value)
         setDisabled(true)
     }
-
-    // function disable(){
-    //     setDisabled(!disabled)
-    // }
     return (
         <>
-            {produit.nom}, {produit.prix}€, {produit.quantite} pièces,
-            <input type="number" ref={quantite} placeholder="quantite" />
-            <Prix  prix={produit.prix} />
-            <button onClick={envoyer} disabled={disabled}>Ajouter</button>
-
+            {produit.nom},
+            <Prix prixHt={produit.prix} />         ,
+            {produit.quantite} pièces
+            <input type="number" ref={qteReservee} />
+            <button onClick={envoyer} disabled={disabled}  >
+                Ajouter dans le panier
+            </button>
         </>
     )
 
