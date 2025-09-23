@@ -3,14 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Hi from './components/Hi'
 import Hello from './components/Hello'
-import Primeur from './components/Primeur'
-import Calculette from './components/Calculette'
-import Compteur from './components/Compteur'
-import OnOff from './components/onOff'
-import Clavier from './components/Clavier'
 import { useState } from 'react'
-import Container from './components/Container'
-import Panier from './components/Panier'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
@@ -30,16 +23,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <Container/>
       <h1>Vite + React en {country}</h1>
       <Hi nom="Wick"> Aix </Hi>
       <Hello nom="Dalton" sendData={afficherPays}> Marseille </Hello>
-      <Primeur/>
-      <Calculette/>
-      <Compteur/>
-      <OnOff/>
-      <Clavier/>
-      <Panier/>
+
     </>
   )
 }
