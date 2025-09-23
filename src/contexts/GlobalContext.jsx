@@ -12,6 +12,13 @@ export const Provider = ({ children }) => {
             [...lignesCommandes, lc]
         )
     }
+    function supprimerLigneCommande(ind) {
+        let data = lignesCommandes
+        data.splice(ind, 1)
+        setLignesCommandes(
+            [...data]
+        )
+    }
 
 
     function ajouterTexte(texte) {
@@ -19,7 +26,7 @@ export const Provider = ({ children }) => {
     }
 
     return (
-        <GlobalContext.Provider value={{ message, textes, ajouterTexte, lignesCommandes, ajouterLigneCommande }}>
+        <GlobalContext.Provider value={{ message, textes, ajouterTexte, lignesCommandes, ajouterLigneCommande, supprimerLigneCommande }}>
             {children}
         </GlobalContext.Provider>
     )
