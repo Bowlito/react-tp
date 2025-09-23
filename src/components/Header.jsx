@@ -1,5 +1,5 @@
 import reactLogo from '../assets/react.svg'
-import Menu from './Menu'
+import Menu from './Menu/Menu'
 import viteLogo from '/vite.svg'
 
 export default function Header() {
