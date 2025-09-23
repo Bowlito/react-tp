@@ -1,42 +1,24 @@
-import Touche from "./Touche";
+import { useState } from "react"
+import Touche from "./Touche"
 
-export default function Clavier() {
-  let lettres = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
-  return (
-    <>
-      <h2>Clavier virtuel</h2>
-      
-      <div>
-         <Touche lettres={lettres}></Touche>
-      </div>
-      
-    </>
-  );
+const Clavier = () => {
+    let lettres = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
+        'z']
+    let [display, setDisplay] = useState('')
+
+    return (
+        <div>
+            <h2>Clavier virtuel</h2>
+            <textarea defaultValue={display}></textarea>
+            <div>
+                {
+                    lettres.map(lettre =>
+                        <Touche key={lettre} lettre={lettre} onSendLetter={() => setDisplay(display + lettre)}/>
+                    )
+                }
+            </div>
+        </div>
+    )
 }
+
+export default Clavier
