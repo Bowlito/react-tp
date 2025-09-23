@@ -1,7 +1,6 @@
 import Controls from "./Controls"
 import { useEffect, useRef, useState } from "react"
 
-
 export default function Compteur() {
     let [valeur, setValeur] = useState(0)
     let [signe, setSigne] = useState('nul')
@@ -30,22 +29,20 @@ export default function Compteur() {
     function decrementer() {
 
         setValeur(valeur - Number(pas.current.value))
-    
+
     }
     function incrementer() {
         setValeur(valeur + Number(pas.current.value))
 
     }
 
-
     return (
         <div>
+
+            <Controls decrementer={decrementer} incrementer={incrementer} />
             <div>
                 Pas : <input type="number" ref={pas} />
             </div>
-
-
-            <Controls decrementer={decrementer} incrementer={incrementer} />
 
             <span style={{ color }}> {valeur}</span>
 

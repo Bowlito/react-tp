@@ -1,6 +1,8 @@
 
-import { useRef, useEffect, useState } from "react"
+import { useRef, useEffect, useState, createContext } from "react"
 import Produit from "./Produit"
+
+export const TvaContext = createContext(0.2)
 
 export default function Primeur() {
     let [produits, setProduits] = useState([
@@ -33,7 +35,7 @@ export default function Primeur() {
     return (
         <>
             <h2>Primeur</h2>
-            <h3>Prix total : {total} </h3>
+            <h3>Prix total : {total}€ HT </h3>
             <div>
                 <label htmlFor="Nom"> Nom </label>
                 <input type="text" ref={nom} />

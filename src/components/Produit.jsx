@@ -1,3 +1,4 @@
+import Prix from "./Prix"
 import { useRef, useState } from "react"
 
 export default function Produit({ produit, setQuantity }) {
@@ -7,7 +8,7 @@ export default function Produit({ produit, setQuantity }) {
 
     let [disabled, setDisabled] = useState(false)
 
-    function envoyer(){
+    function envoyer() {
         setQuantity(quantite.current.value)
         setDisabled(true)
     }
@@ -17,9 +18,11 @@ export default function Produit({ produit, setQuantity }) {
     // }
     return (
         <>
-            {produit.nom}, {produit.prix}€, {produit.quantite} pièces, 
+            {produit.nom}, {produit.prix}€, {produit.quantite} pièces,
             <input type="number" ref={quantite} placeholder="quantite" />
+            <Prix  prix={produit.prix} />
             <button onClick={envoyer} disabled={disabled}>Ajouter</button>
+
         </>
     )
 
