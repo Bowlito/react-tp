@@ -9,6 +9,8 @@ import Compteur from './components/Compteur'
 import OnOff from './components/onOff'
 import Clavier from './components/Clavier'
 import { useState } from 'react'
+import Container from './components/Container'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <Container/>
       <h1>Vite + React en {country}</h1>
       <Hi nom="Wick"> Aix </Hi>
       <Hello nom="Dalton" sendData={afficherPays}> Marseille </Hello>

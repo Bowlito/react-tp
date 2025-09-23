@@ -2,9 +2,12 @@
 
 import classNames from 'classnames'
 import './Hello.css'
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 
 function Hello({ nom, children, sendData }) {
+
+    const {message} = useContext(GlobalContext)
 
     // Les fonctions peuvent être déclarées en dehors ou dans le composant selon la situation. Recommandé en dehors quand c'est possible.
     function afficherBonjour() {
@@ -104,19 +107,19 @@ function Hello({ nom, children, sendData }) {
                 {
                     personnes.map((elt, ind) =>
 
-                        <li key={ind} className={ind % 2 == 0 ? 'rouge' : 'bleu'}> 
-                        {elt['nom']} {elt['prenom']}</li>
-                        
+                        <li key={ind} className={ind % 2 == 0 ? 'rouge' : 'bleu'}>
+                            {elt['nom']} {elt['prenom']}</li>
+
                     )
                 }
             </ul>
-            
+
             <h2>Evènements</h2>
 
             <button onClick={() => direBonjour('Travolta')}>
                 Afficher Bonjour
             </button>
-            <input type="text" name="texte" id="texte" onInput={afficherTexte}/>
+            <input type="text" name="texte" id="texte" onInput={afficherTexte} />
             <h2>De l'enfant au parent</h2>
             <div>
                 <input type="text" placeholder='Pays' ref={pays} />
@@ -124,18 +127,20 @@ function Hello({ nom, children, sendData }) {
                     Envoyer au parent
                 </button>
             </div>
+            <h2>Récupération de valeur globale</h2>
+            <p>{message}</p>
         </div>
     )
 
-    function envoyer(){
+    function envoyer() {
         sendData(pays.current.value)
     }
     function direBonjour(param = 'Doe') {
         alert(`Bonjour ${param}`)
     }
-    function afficherTexte(event){
+    function afficherTexte(event) {
         console.log(event.target.value);
-        
+
     }
 
 }
