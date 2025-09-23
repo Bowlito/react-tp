@@ -30,11 +30,11 @@ export default function Compteur() {
     function decrementer() {
 
         setValeur(valeur - Number(pas.current.value))
-        //getSigne(valeur - 1)
+    
     }
     function incrementer() {
         setValeur(valeur + Number(pas.current.value))
-        //getSigne(valeur + 1)
+
     }
 
 
