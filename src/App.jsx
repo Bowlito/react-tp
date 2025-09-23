@@ -1,32 +1,17 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Hi from './components/Hi'
-import Hello from './components/Hello'
-import { useState } from 'react'
+import Menu from './components/Menu'
+import Header from './components/Header'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import AppRoutes from './router/routes'
 
 function App() {
 
-  const [country, setCountry] = useState('')
-  function afficherPays(value){
-    setCountry(value)
-  }
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React en {country}</h1>
-      <Hi nom="Wick"> Aix </Hi>
-      <Hello nom="Dalton" sendData={afficherPays}> Marseille </Hello>
+      <Header/>
+        <Menu />
 
+      <AppRoutes />
     </>
   )
 }

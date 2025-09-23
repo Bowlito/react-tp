@@ -22,7 +22,7 @@
 //     )
 // }
 import { createContext, useContext, useRef, useState } from "react"
-import Produit from "./Produit"
+import Produit from "../components/Produit"
 import { GlobalContext } from "../contexts/GlobalContext"
 const TVA = 0.2
 export const TvaContext = createContext(TVA)

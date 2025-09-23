@@ -1,4 +1,4 @@
-import Controls from "./Controls"
+import Controls from "../components/Controls"
 import { useEffect, useRef, useState } from "react"
 
 export default function Compteur() {

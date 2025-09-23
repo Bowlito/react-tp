@@ -6,7 +6,7 @@
 //     )
 
 import { useRef, useState } from "react"
-import Prix from "./Prix"
+import Prix from "../views/Prix"
 
 
 // }

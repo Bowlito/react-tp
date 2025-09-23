@@ -1,5 +1,5 @@
-import First from "./First"
-import Second from "./Second"
+import First from "../components/First"
+import Second from "../components/Second"
 
 export default function Container() {
 
