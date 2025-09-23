@@ -1,3 +1,4 @@
+import Controls from "./Controls"
 import { useEffect, useRef, useState } from "react"
 
 
@@ -24,10 +25,10 @@ export default function Compteur() {
     useEffect(() => {
         pas.current.value = 1
     }, [])
-    
+
 
     function decrementer() {
-        
+
         setValeur(valeur - Number(pas.current.value))
         //getSigne(valeur - 1)
     }
@@ -37,16 +38,17 @@ export default function Compteur() {
     }
 
 
-
-
     return (
         <div>
             <div>
-                Pas : <input type="number" ref={pas}/>
+                Pas : <input type="number" ref={pas} />
             </div>
-            <button onClick={decrementer}>-</button>
-            <span style={{color}}> {valeur}</span>
-            <button onClick={incrementer}>+</button>
+
+
+            <Controls decrementer={decrementer} incrementer={incrementer} />
+
+            <span style={{ color }}> {valeur}</span>
+
             <h2>Compteur : signe = {signe}</h2>
         </div>
     )
