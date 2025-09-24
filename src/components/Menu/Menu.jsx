@@ -18,10 +18,19 @@ export default function Menu(){
                     <NavLink className="nav-link" to="/primeur">Primeur</NavLink>
                 </li>
                 <li className="nav-item">
+                    <NavLink className="nav-link" to="/panier">Panier</NavLink>
+                </li>
+                <li className="nav-item">
                     <NavLink className="nav-link" to="/clavier">Clavier</NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink className="nav-link" to="/container">Conteneur</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/personne">Personnes</NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink className="nav-link" to="/tableau">Tableau</NavLink>
                 </li>
 
             </ul>

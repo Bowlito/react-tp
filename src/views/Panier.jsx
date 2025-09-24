@@ -2,8 +2,8 @@ import { useContext, useState } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 export default function Panier() {
-    const { lignesCommandes, supprimerLigneCommande } = useContext(GlobalContext)
-
+    const { lignesCommandes, supprimerLigneCommande, ajouterQte } = useContext(GlobalContext)
+    
 
 
 
@@ -18,7 +18,7 @@ export default function Panier() {
 
                             {/* Exercice : Faire finctionner les boutons pour modifier la quantité */}
                             <button > - </button>
-                            <button > + </button>
+                            <button onClick={() => ajouterQte(lc.qteReservee)}> + </button>
                         </li>
                     )
                 }
