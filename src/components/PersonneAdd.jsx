@@ -4,6 +4,7 @@ import { useState } from "react"
 import personneSchema from "../validators/personne.validator.js";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from 'axios'
 
 export default function PersonneAdd({onSendData}) {
     // handleSubmit : gérer la soumission du formulaire (en évitant le re-render)
@@ -15,14 +16,23 @@ export default function PersonneAdd({onSendData}) {
     
     
     function ajouterPersonne(formData) {
-        onSendData(formData);
+
+        axios
+            .post('http://localhost:3000/personnes', formData)        
+            .then(res => onSendData(res.data))
+       
         reset();
 
     }
+    // function ajouterPersonne(formData) {
+    //     onSendData(formData);
+    //     reset();
+
+    // }
     return (
         <div>
             <h3>Ajouter une nouvelle personne</h3>
-            {isSubmitSuccessful && <div class="alert alert-primary" role="alert">
+            {isSubmitSuccessful && <div className="alert alert-primary" role="alert">
                 Personne ajoutée avec succès
             </div>}
             <form onSubmit={handleSubmit(ajouterPersonne)}>
