@@ -15,8 +15,17 @@ import Calcul from "../views/Calcul"
 import Tableau from "../views/Tableau"
 import ElementTableau from "../views/elementTableau"
 import NotFound from "../views/NotFound/NotFound"
+import Login from "../views/Login"
+import PrivateRoute from "./PrivateRoute"
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
+
+
+
+
 
 const AppRoutes = () => {
+    const {isAuthenticated} = useContext(GlobalContext)
     return (
         <Routes>
             <Route path="/" element={<Home />} />
@@ -29,13 +38,16 @@ const AppRoutes = () => {
             <Route path="/onoff" element={<OnOff />} />
             <Route path="/about" element={<About />} />
             <Route path="/adresse" element={<Adresse />} />
-            <Route path="/personne" element={<Personne />} />
-            <Route path="/personne/:id" element={<PersonneDetails />} />
+            <Route element={<PrivateRoute isAuthenticated={isAuthenticated}/>}>
+                <Route path="/personne" element={<Personne />} />
+                <Route path="/personne/:id" element={<PersonneDetails />} />
+            </Route>
             <Route path="/calcul/:op" element={<Calcul />} />
             <Route path="/tableau/" element={<Tableau />} />
             <Route path="/tableau/:id" element={<ElementTableau />} />
+            <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
-           
+
 
         </Routes>
     )

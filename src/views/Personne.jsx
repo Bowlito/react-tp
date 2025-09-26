@@ -1,26 +1,19 @@
 import { Link } from "react-router-dom";
 import PersonneAdd from "../components/PersonneAdd";
 import { useState } from "react";
-import axios from 'axios'
+import axios from '../../axios.config.js'
 import { useEffect } from "react";
 
 export default function Personne() {
 
-    const [personnes, setPersonnes] = useState([
-        // { id: 1, nom: 'Wick', prenom: 'John', age: 45 },
-        // { id: 2, nom: 'Dalton', prenom: 'Jack', age: 40 },
-        // { id: 3, nom: 'Dupont', prenom: 'Sophie', age: 30 }
-    ]);
+    const [personnes, setPersonnes] = useState([ ]);
+    const [erreur, setErreur] = useState()
 
     useEffect(() => {
-        // axios({
-        //     url: `http://localhost:3000/personnes`,
-        //     method: 'GET'
-        // })
-        // .then(res => setPersonnes(res.data))
         axios
-            .get(`http://localhost:3000/personnes`)
+            .get(`/personnes`)
             .then(res => setPersonnes(res.data))
+            .catch(() => setErreur("Liste temporairement indisponible"))
     }, [])
 
     const ajouterPersonne = (user) => {
@@ -30,16 +23,10 @@ export default function Personne() {
 
     }
 
-    function refreshComponent() {
-        axios
-            .get(`http://localhost:3000/personnes`)
-            .then(res => setPersonnes(res.data))
-    }
-
     function supprimerUser(id) {
         axios
-            .delete(`http://localhost:3000/personnes/${id}`)
-            .then(refreshComponent)
+            .delete(`/personnes/${id}`)
+            .then(()=> setPersonnes(personnes.filter(p => p.id != id)))
     }
 
     return (
@@ -50,15 +37,20 @@ export default function Personne() {
 
             <h3>Liste des personnes</h3>
             <ul>
-                {personnes.map((p, ind) =>
+                {
+                !erreur && 
+                personnes.map((p, ind) =>
                     <li key={p.id}>{p.nom} {p.prenom}&nbsp;
                         <Link to={`/personne/${p.id}`}>
                             details
                         </Link>
+                        &nbsp;
                         <button onClick={() => supprimerUser(p.id)}> Supprimer </button>
                     </li>
                 )}
             </ul>
+
+            {erreur && <p>{erreur}</p>}
 
 
         </div>

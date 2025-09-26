@@ -1,24 +1,20 @@
-import axios from "axios";
+import axios from "../../axios.config.js";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function PersonneDetails() {
-    
 
     const { id } = useParams()
     const navigate = useNavigate()
 
-     
-
-    const [personne, setPersonne] = useState([])
+    const [personne, setPersonne] = useState({})
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/personnes/${id}`)
+        axios.get(`/personnes/${id}`)
         .then(res => setPersonne(res.data))
     
     }, [])
-    
-    
+        
     
     return (
         <div>

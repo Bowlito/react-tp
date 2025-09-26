@@ -4,7 +4,7 @@ import { useState } from "react"
 import personneSchema from "../validators/personne.validator.js";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from 'axios'
+import axios from '../../axios.config.js'
 
 export default function PersonneAdd({onSendData}) {
     // handleSubmit : gérer la soumission du formulaire (en évitant le re-render)
@@ -18,7 +18,7 @@ export default function PersonneAdd({onSendData}) {
     function ajouterPersonne(formData) {
 
         axios
-            .post('http://localhost:3000/personnes', formData)        
+            .post('/personnes', formData)        
             .then(res => onSendData(res.data))
        
         reset();

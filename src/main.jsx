@@ -5,8 +5,7 @@ import App from './App.jsx'
 import { Provider } from './contexts/GlobalContext.jsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-const root = createRoot(document.getElementById('root'))
-root.render(
+createRoot(document.getElementById('root')).render(
 
   //Stric mode à supprimer pour mettre en prod
   <StrictMode>
